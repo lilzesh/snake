@@ -1,0 +1,10 @@
+{
+    "type": "module",
+    "scripts": {
+        "start": "nodemon ./server.js 8080"
+    },
+    "dependencies": {
+        "express": "^5.1.0",
+        "nodemon": "^3.1.10"
+    }
+}
