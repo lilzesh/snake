@@ -5,7 +5,6 @@ class Snake {
         this.canvas = options.root;
         this.ctx = this.canvas.getContext('2d');
         this.bounds = this.canvas.getBoundingClientRect();
-
         this.size = 10;
         this.segments = [{
             x: this.coord('x'),
@@ -13,11 +12,8 @@ class Snake {
         }];
         this.axis = undefined;
         this.dir = undefined;
-
         this.target = this.get_target_loc();
-
         this.score = score;
-
         window.addEventListener('keydown', this.key.bind(this));
     }
 
