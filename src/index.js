@@ -42,20 +42,16 @@ import snake from './snake.js';
                 snake.canvas.width,
                 snake.canvas.height
             );
-
             snake.segments.unshift({
                 x: snake.axis === 'x' ? head.x + dist : head.x,
                 y: snake.axis === 'y' ? head.y + dist : head.y, 
             });
-
             snake.segments.pop();
         }
         
         if (head.x === snake.target.x && head.y === snake.target.y) {
             snake.segments.push(snake.target);
-       
             snake.score.textContent = snake.segments.length;
-
             snake.new_target = snake.get_target_loc();
         }
     }
