@@ -1,4 +1,4 @@
-import { axes, dirs } from './vars.js';
+import { axes, dirs, bounds } from './vars.js';
 
 class Snake {
     constructor(options) {
@@ -13,7 +13,6 @@ class Snake {
         this.axis = undefined;
         this.dir = undefined;
         this.target = this.get_target_loc();
-        this.score = score;
         window.addEventListener('keydown', this.key.bind(this));
     }
 
@@ -38,6 +37,21 @@ class Snake {
         anchors -= this.size;
         
         return Math.floor(Math.random() * anchors) * this.size;
+    }
+
+    out_of_bounds() {
+        let valid = true;
+        
+        console.log(this.dir, this.axis);
+        console.log(this.segments[0]);
+
+        if (this.dir === -1) {
+            valid = this.segments[0][this.axis] < 0
+        } else {
+            valid  = this.segments[0][this.axis] > this.canvas[bounds[this.axis]];
+        }
+
+        return valid;
     }
 
     get_target_loc() {
@@ -75,7 +89,7 @@ class Snake {
     }
 
     draw_target() {
-        this.ctx.fillStyle = '#9ece6a';
+        this.ctx.fillStyle = '#9d7cd8';
         
         this.ctx.fillRect(
             this.target.x,
@@ -83,6 +97,25 @@ class Snake {
             this.size,
             this.size
         );
+    }
+
+    clear() {
+        this.ctx.clearRect(
+            0,
+            0,
+            this.canvas.width,
+            this.canvas.height
+        );
+    }
+
+    reset() {
+        this.segments = [{
+            x: this.coord('x'),
+            y: this.coord('y'),
+        }];
+        this.axis = undefined;
+        this.dir = undefined;
+        this.target = this.get_target_loc();
     }
 }
 

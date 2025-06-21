@@ -32,7 +32,7 @@ body {
     transform: translateY(-50%);
 }
 
-.snake-heading {
+.snake-message {
     background-color: var(--c-dark_blue);
     margin: 0;
     font-size: 1rem;
@@ -48,4 +48,17 @@ body {
 canvas {
     display: block;
     background-color: var(--c-black);
+}
+
+#restart {
+    background-color: transparent;
+    border: 2px solid var(--c-white);
+    color: var(--c-white);
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

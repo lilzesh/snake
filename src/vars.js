@@ -11,3 +11,8 @@ export const dirs = {
     'ArrowUp': -1,
     'ArrowDown': 1,
 };
+
+export const bounds = {
+    x: 'width',
+    y: 'height',
+};
