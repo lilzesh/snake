@@ -42,9 +42,6 @@ class Snake {
     out_of_bounds() {
         let valid = true;
         
-        console.log(this.dir, this.axis);
-        console.log(this.segments[0]);
-
         if (this.dir === -1) {
             valid = this.segments[0][this.axis] < 0
         } else {

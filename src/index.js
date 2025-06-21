@@ -74,7 +74,7 @@ import snake from './snake.js';
         last_render = last_tick;
         tick_length = 50;
         score.textContent = 1;
-        message.textContent = 'arrow to start';
+        message.textContent = 'arrow to move';
         snake.reset();
     }
 
