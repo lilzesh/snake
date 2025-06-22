@@ -25,6 +25,8 @@ class Snake {
     }
 
     key(e) {
+        if (axes[e.code] === this.axis) return;
+
         this.axis = axes[e.code];
         this.dir = dirs[e.code];
     }
@@ -40,26 +42,33 @@ class Snake {
     }
 
     out_of_bounds() {
+        let head = this.segments[0];
         let valid = true;
         
         if (this.dir === -1) {
-            valid = this.segments[0][this.axis] < 0
+            valid = head[this.axis] < 0
         } else {
-            valid  = this.segments[0][this.axis] > this.canvas[bounds[this.axis]];
+            valid  = head[this.axis] > this.canvas[bounds[this.axis]];
         }
 
         return valid;
     }
 
     get_target_loc() {
-        let found = false;
-
         const segment = {
             x: this.coord('x'),
             y: this.coord('y'),
         };
        
-        for (let i = 0; i < this.segments.length; i++) {
+        const found = this.in_segments(segment, 0);
+
+        return found ? this.get_target_loc() : segment;
+    }
+
+    in_segments(segment, start = 0) {
+        let found = false;
+
+        for (let i = start; i < this.segments.length; i++) {
             const xs_same = this.segments[i].x === segment.x;
             const ys_same = this.segments[i].y === segment.y;
 
@@ -69,7 +78,7 @@ class Snake {
             }
         }
 
-        return found ? this.get_target_loc() : segment;
+        return found;
     }
 
     draw_snake() {

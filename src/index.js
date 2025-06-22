@@ -53,7 +53,12 @@ import snake from './snake.js';
 
             snake.segments.pop();
 
-            if (snake.out_of_bounds()) end = true;
+            const is_ob = snake.out_of_bounds();
+            const in_segments = snake.in_segments(snake.segments[0], 1);
+
+            if (is_ob || in_segments) {
+                end = true;
+            }
         }
         
         if (head.x === snake.target.x && head.y === snake.target.y) {
