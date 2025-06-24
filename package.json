@@ -1,10 +1,14 @@
 {
     "type": "module",
     "scripts": {
-        "start": "nodemon ./server.js 8080"
+        "start": "nodemon ./server.js 8080",
+        "build": "rollup -c && cp ./public/index.css ./dist"
     },
-    "dependencies": {
+    "devDependencies": {
+        "@rollup/plugin-html": "^2.0.0",
+        "@rollup/plugin-terser": "^0.4.4",
         "express": "^5.1.0",
-        "nodemon": "^3.1.10"
+        "nodemon": "^3.1.10",
+        "rollup": "^4.44.0"
     }
 }
